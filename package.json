@@ -2,7 +2,7 @@
 	"name": "vscode-get-color-name",
 	"displayName": "VSCode Extension: Get Color Name",
 	"description": "A VSCode extension to get the name of the color from its HEX value",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
