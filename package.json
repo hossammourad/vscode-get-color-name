@@ -1,11 +1,16 @@
 {
 	"name": "vscode-get-color-name",
-	"displayName": "VSCode Extension: Get Color Name",
+	"displayName": "Get Color Name",
 	"description": "A VSCode extension to get the name of the color from its HEX value",
 	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.33.0"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hos4m/vscode-get-color-name"
+	},
+	"icon": "assets/logo.png",
 	"categories": [
 		"Other"
 	],
@@ -34,5 +39,6 @@
 	},
 	"dependencies": {
 		"axios": "^0.18.0"
-	}
+	},
+	"publisher": "HossamMourad"
 }
