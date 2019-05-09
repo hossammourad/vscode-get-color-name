@@ -1,6 +1,6 @@
-# my-first-vscode-extension README
+# vscode-get-color-name README
 
-This is the README for your extension "my-first-vscode-extension". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "vscode-get-color-name". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 

@@ -1,37 +1,50 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
-
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-
+const axios = require('axios').default;
+const toCamelCase = require('./utils/toCamelCase');
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+  let disposable = vscode.commands.registerCommand(
+    'extension.getColorName',
+    function() {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor) {
+        vscode.window.showInformationMessage('editor does not exist');
+        return;
+      }
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "my-first-vscode-extension" is now active!');
+      const selectedText = editor.document.getText(editor.selection); // EXAMPLE: #112233
+      if (selectedText[0] === '#') {
+        axios
+          .get(`https://www.thecolorapi.com/id?hex=${selectedText.substr(1)}`)
+          .then(({ data }) => {
+            if (data.name.value) {
+              const colorName = toCamelCase(data.name.value);
+              editor.edit(edit => {
+                edit.replace(editor.selection, colorName);
+              });
+            }
+          })
+          .catch(error => {
+            console.log(error);
+            vscode.window.showInformationMessage(
+              `An error occured while getting the name of the color, make sure that you're selecting a color HEX value and try again.`
+            );
+          });
+      } else {
+        vscode.window.showInformationMessage(
+          `Select the HEX color with the # symbol`
+        );
+      }
+    }
+  );
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('extension.helloWorld', function () {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World!');
-	});
-
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable);
 }
+
 exports.activate = activate;
 
-// this method is called when your extension is deactivated
-function deactivate() {}
-
 module.exports = {
-	activate,
-	deactivate
-}
+  activate
+};

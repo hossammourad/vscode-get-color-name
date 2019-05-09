@@ -1,7 +1,7 @@
 {
-	"name": "my-first-vscode-extension",
-	"displayName": "my-first-vscode-extension",
-	"description": "Playing with VSCode extension API",
+	"name": "vscode-get-color-name",
+	"displayName": "VSCode Extension: Get Color Name",
+	"description": "A VSCode extension to get the name of the color from its HEX value",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.33.0"
@@ -10,14 +10,14 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:extension.getColorName"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "extension.getColorName",
+				"title": "Get Color Name"
 			}
 		]
 	},
@@ -31,5 +31,8 @@
 		"eslint": "^5.13.0",
 		"@types/node": "^10.12.21",
 		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"axios": "^0.18.0"
 	}
 }
