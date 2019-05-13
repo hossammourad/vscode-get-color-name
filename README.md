@@ -1,4 +1,5 @@
-# Get Color Name
+![GET COLOR NAME](assets/logo.png)
+
 A VSCode extension to get the name of the color from its HEX value
 
 https://marketplace.visualstudio.com/items?itemName=HossamMourad.vscode-get-color-name
@@ -7,7 +8,7 @@ https://marketplace.visualstudio.com/items?itemName=HossamMourad.vscode-get-colo
 
 # Usage
 - Install the extension
-- Select a HEX value, example #FFF (with the # symobl)
+- Select a HEX value, example `#FFF` (with the `#` symobl)
 - Press `Command+Shift+P` to open the Command Palette
 - Select `Get Color Name`
 - The color name will be copied automatically to your clipboard
