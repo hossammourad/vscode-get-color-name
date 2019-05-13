@@ -1,6 +1,8 @@
 const vscode = require('vscode');
 const axios = require('axios').default;
-const toCamelCase = require('./utils/toCamelCase');
+const ncp = require('copy-paste');
+const kebabCase = require('lodash/kebabCase');
+
 /**
  * @param {vscode.ExtensionContext} context
  */
@@ -20,9 +22,11 @@ function activate(context) {
           .get(`https://www.thecolorapi.com/id?hex=${selectedText.substr(1)}`)
           .then(({ data }) => {
             if (data.name.value) {
-              const colorName = toCamelCase(data.name.value);
-              editor.edit(edit => {
-                edit.replace(editor.selection, colorName);
+              const colorName = kebabCase(data.name.value);
+              ncp.copy(colorName, () => {
+                vscode.window.showInformationMessage(
+                  `Color Name has been copied to your clipboard 🎉`
+                );
               });
             }
           })

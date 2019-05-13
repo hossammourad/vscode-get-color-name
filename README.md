@@ -3,7 +3,7 @@ A VSCode extension to get the name of the color from its HEX value
 
 https://marketplace.visualstudio.com/items?itemName=HossamMourad.vscode-get-color-name
 
-![](https://media.giphy.com/media/KHDKWqdPd8ZBciHxph/giphy.gif)
+![](https://i.imgur.com/gEwh1XU.gif)
 
 # Usage
 - Install the extension
